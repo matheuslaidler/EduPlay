@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCompris Web - Labirinto</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .game-notification {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 25px;
+            border-radius: 10px;
+            background-color: #4a90e2;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .game-notification.success {
+            background-color: #4caf50;
+        }
+
+        .game-notification.error {
+            background-color: #f44336;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translate(-50%, -100%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .game-notification {
+                width: 90%;
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+        }
+
+        .maze-container {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 2px;
+            margin: 20px auto;
+            max-width: 500px;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .maze-cell {
+            aspect-ratio: 1;
+            background-color: white;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .maze-cell.wall {
+            background-color: #333;
+        }
+
+        .maze-cell.player {
+            background-color: #4CAF50;
+        }
+
+        .maze-cell.exit {
+            background-color: #f44336;
+        }
+
+        .mobile-controls {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .mobile-controls {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                margin: 20px 0;
+            }
+
+            .horizontal-controls {
+                display: flex;
+                gap: 20px;
+            }
+
+            .mobile-controls button {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                border: none;
+                border-radius: 50%;
+                background-color: #4CAF50;
+                color: white;
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Labirinto</h1>
+        <div class="game-info">
+            <p>Nível: <span id="level">1</span></p>
+            <p>Movimentos: <span id="moves">0</span></p>
+            <p>Tempo: <span id="time">50</span>s</p>
+            <p class="mobile-instructions">Use as setas do teclado para mover. Em dispositivos móveis, deslize na tela.</p>
+        </div>
+        <div class="maze-container" id="maze"></div>
+        <div class="mobile-controls">
+            <button id="moveUp">↑</button>
+            <div class="horizontal-controls">
+                <button id="moveLeft">←</button>
+                <button id="moveRight">→</button>
+            </div>
+            <button id="moveDown">↓</button>
+        </div>
+        <div class="maze-controls">
+            <button id="restartButton">Reiniciar</button>
+        </div>
+        <a href="../index.html" class="back-button">Voltar para a página inicial</a>
+    </div>
+    
+    <div id="gameNotification" class="game-notification"></div>
+    
+    <script src="../js/maze.js"></script>
+</body>
+</html> 

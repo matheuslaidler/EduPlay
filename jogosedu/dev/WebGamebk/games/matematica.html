@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicar & Criar - Matemática Divertida</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <script src="../js/theme.js"></script>
+    <style>
+        .math-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px auto;
+            max-width: 600px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border-color: var(--border-color);
+        }
+        
+        .math-problem {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+            background-color: #f0f8ff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .math-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .math-option {
+            width: 120px;
+            height: 80px;
+            background-color: #e0e0e0;
+            border: 2px solid #aaa;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .math-option:hover {
+            background-color: #d0d0d0;
+            transform: scale(1.05);
+        }
+        
+        .math-option.correct {
+            background-color: #d9f2d9;
+            border-color: #7ed321;
+        }
+        
+        .math-option.incorrect {
+            background-color: #ffcccc;
+            border-color: #ff5252;
+        }
+        
+        .math-feedback {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            min-height: 30px;
+        }
+        
+        .math-score {
+            margin-top: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .math-timer {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .math-progress {
+            width: 100%;
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        
+        .math-progress-bar {
+            height: 100%;
+            background-color: #4a90e2;
+            transition: width 0.3s ease;
+        }
+        
+        @media (max-width: 500px) {
+            .math-problem {
+                font-size: 2rem;
+                padding: 15px 30px;
+            }
+            
+            .math-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .math-option {
+                width: 100px;
+                height: 70px;
+                font-size: 1.5rem;
+            }
+        }
+
+        .game-notification {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 25px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            z-index: 1000;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .game-notification.success {
+            background-color: #4CAF50;
+        }
+
+        .game-notification.error {
+            background-color: #f44336;
+        }
+
+        .game-notification.info {
+            background-color: #2196F3;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translate(-50%, -100%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button class="theme-toggle" id="themeToggle">🌓</button>
+    </div>   
+    <div class="logo-container">
+        <img src="../img/logo_single.png" alt="Clicar & Criar Logo" class="logo" id="logoImage">
+    </div>
+    <div class="game-container">
+        <h1>Matemática Divertida</h1>
+        <div class="game-info">
+            <p>Nível: <span id="level">1</span></p>
+            <p class="instructions">Escolha a resposta correta para o problema matemático.</p>
+        </div>
+        <div class="math-container">
+            <div class="math-score">Pontuação: <span id="score">0</span></div>
+            <div class="math-timer">Tempo: <span id="timer">30</span>s</div>
+            <div class="math-progress">
+                <div id="progressBar" class="math-progress-bar" style="width: 100%;"></div>
+            </div>
+            <div class="math-problem" id="mathProblem">5 + 3 = ?</div>
+            <div class="math-options" id="mathOptions">
+                <!-- As opções serão geradas pelo JavaScript -->
+            </div>
+            <div class="math-feedback" id="feedback"></div>
+        </div>
+        <div class="game-buttons">
+            <button id="newGameButton">Novo Jogo</button>
+            <button id="helpButton">Ajuda</button>
+        </div>
+        <a href="../index.html" class="back-button">Voltar para a página inicial</a>
+    </div>
+    <div id="gameNotification" class="game-notification"></div>
+    <script src="../js/matematica.js"></script>
+</body>
+</html> 

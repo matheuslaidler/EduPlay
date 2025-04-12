@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCompris Web - Labirinto</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Labirinto</h1>
+        <div class="game-info">
+            <p>Nível: <span id="level">1</span></p>
+            <p>Movimentos: <span id="moves">0</span></p>
+            <p class="mobile-instructions">Use as setas do teclado para mover. Em dispositivos móveis, deslize na tela.</p>
+        </div>
+        <div class="maze-container" id="maze"></div>
+        <div class="mobile-controls">
+            <button id="moveUp">↑</button>
+            <div class="horizontal-controls">
+                <button id="moveLeft">←</button>
+                <button id="moveRight">→</button>
+            </div>
+            <button id="moveDown">↓</button>
+        </div>
+        <div class="maze-controls">
+            <button id="restartButton">Reiniciar</button>
+            <button id="nextLevel">Próximo Nível</button>
+        </div>
+        <a href="../index.html" class="back-button">Voltar para a página inicial</a>
+    </div>
+    <script src="../js/maze.js"></script>
+</body>
+</html> 

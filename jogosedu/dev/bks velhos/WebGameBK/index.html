@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicar & Criar - Games</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .intro h1 {
+            font-size: 2.5rem;
+            color: #4a90e2;
+            margin-bottom: 15px;
+        }
+        
+        .intro p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .view-toggle button {
+            padding: 8px 15px;
+            margin: 0 10px;
+            background-color: #e0e0e0;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .view-toggle button.active {
+            background-color: #4a90e2;
+            color: white;
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .game-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: white;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .game-image {
+            height: 180px;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .game-icon {
+            font-size: 5rem;
+            color: #4a90e2;
+        }
+        
+        .game-info {
+            padding: 15px;
+        }
+        
+        .game-info h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .game-info p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .game-link {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #4a90e2;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .game-link:hover {
+            background-color: #2a70c2;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+        }
+        
+        .category-title {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: #333;
+            border-bottom: 2px solid #4a90e2;
+            padding-bottom: 5px;
+        }
+        
+        .category-container {
+            display: none;
+        }
+        
+        .all-games-container {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .intro h1 {
+                font-size: 2rem;
+            }
+            
+            .intro p {
+                font-size: 1rem;
+            }
+            
+            .game-icon {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="intro">
+            <h1>Clicar & Criar | EduPlay</h1>
+            <p>Catálogo de Jogos Educativos para crianças, ajudando a desenvolver habilidades cognitivas, motoras e de raciocínio lógico de forma divertida!</p>
+        </div>
+        
+        <div class="view-toggle">
+            <button id="allGamesBtn" class="active">Todos os Jogos</button>
+            <button id="categoriesBtn">Ver por Categorias</button>
+        </div>
+        
+        <!-- Visualização de todos os jogos juntos -->
+        <div id="allGamesContainer" class="all-games-container">
+            <div class="games-grid">
+                <!-- Jogos para Habilidades com o Mouse -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">❄️</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Descobrindo</h3>
+                        <p>Derreta o gelo ao movimentar o mouse sobre eles.</p>
+                        <a href="games/descobrir.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">🧊</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Quebra-Gelo</h3>
+                        <p>Desfaça o gelo ao clicar nos blocos para quebrá-los.</p>
+                        <a href="games/quebragelo.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">🎨</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Mini-Paint</h3>
+                        <p>Um simples programa de desenho com várias ferramentas para expressar a criatividade.</p>
+                        <a href="games/pintar.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <!-- Jogos de Lógica e Raciocínio -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">🎴</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Jogo da Memória</h3>
+                        <p>Encontre os pares de cartas iguais. Exercita a memória e a concentração.</p>
+                        <a href="games/memory.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">⭕</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Jogo da Velha</h3>
+                        <p>Clássico jogo de estratégia para desenvolver o pensamento lógico (Tic-Tac-Toe).</p>
+                        <a href="games/tic-tac-toe.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">🧩</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Labirinto</h3>
+                        <p>Encontre o caminho até a saída em labirintos desafiadores.</p>
+                        <a href="games/labirinto.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">🗺️</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Labirinto Corrido</h3>
+                        <p>Encontre a saída do labirinto antes que o tempo acabe.</p>
+                        <a href="games/maze.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">🔢</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Sudoku Junior</h3>
+                        <p>Versão simplificada do Sudoku para crianças, com números de 1 a 4.</p>
+                        <a href="games/sudoku.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <!-- Jogos de Matemática -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">5️⃣</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Organizando Números</h3>
+                        <p>Ordene os números em sequência crescente.</p>
+                        <a href="games/numbers.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">➕</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Contas Simples</h3>
+                        <p>Exercícios de adição e subtração para desenvolver habilidades matemáticas básicas.</p>
+                        <a href="games/math.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">📊</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Matemática Divertida</h3>
+                        <p>Dentro do tempo, resolva desafios matemáticos com níveis progressivos de dificuldade.</p>
+                        <a href="games/matematica.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <!-- Jogos de Linguagem -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">📝</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Palavras</h3>
+                        <p>Encontre palavras escondidas na grade.</p>
+                        <a href="games/words.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">🎹</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Piano</h3>
+                        <p>Toque notas musicais no piano virtual.</p>
+                        <a href="games/piano.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Visualização por categorias -->
+        <div id="categoriesContainer" class="category-container">
+            <!-- Categoria: Habilidades com o Mouse -->
+            <h2 class="category-title">Habilidades com o Mouse</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">❄️</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Descobrindo</h3>
+                        <p>Derreta o gelo ao movimentar o mouse sobre eles.</p>
+                        <a href="games/descobrir.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">🧊</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Quebra-Gelo</h3>
+                        <p>Desfaça o gelo ao clicar nos blocos para quebrá-los.</p>
+                        <a href="games/quebragelo.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">🎨</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Mini-Paint</h3>
+                        <p>Um simples programa de desenho com várias ferramentas para expressar a criatividade.</p>
+                        <a href="games/pintar.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categoria: Lógica e Raciocínio -->
+            <h2 class="category-title">Lógica e Raciocínio</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">🎴</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Jogo da Memória</h3>
+                        <p>Encontre os pares de cartas iguais. Exercita a memória e a concentração.</p>
+                        <a href="games/memory.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">⭕</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Jogo da Velha</h3>
+                        <p>Clássico jogo de estratégia para desenvolver o pensamento lógico (Tic-Tac-Toe).</p>
+                        <a href="games/tic-tac-toe.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">🧩</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Labirinto</h3>
+                        <p>Encontre o caminho até a saída em labirintos desafiadores.</p>
+                        <a href="games/labirinto.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">🗺️</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Labirinto Corrido</h3>
+                        <p>Encontre a saída do labirinto antes que o tempo acabe.</p>
+                        <a href="games/maze.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">🔢</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Sudoku Junior</h3>
+                        <p>Versão simplificada do Sudoku para crianças, com números de 1 a 4.</p>
+                        <a href="games/sudoku.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categoria: Matemática -->
+            <h2 class="category-title">Matemática</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">5️⃣</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Organizando Números</h3>
+                        <p>Ordene os números em sequência crescente.</p>
+                        <a href="games/numbers.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">➕</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Contas Simples</h3>
+                        <p>Exercícios de adição e subtração para desenvolver habilidades matemáticas básicas.</p>
+                        <a href="games/math.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">📊</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Matemática Divertida</h3>
+                        <p>Dentro do tempo, resolva desafios matemáticos com níveis progressivos de dificuldade.</p>
+                        <a href="games/matematica.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categoria: Linguagem -->
+            <h2 class="category-title">Linguagem</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">📝</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Palavras</h3>
+                        <p>Encontre palavras escondidas na grade.</p>
+                        <a href="games/words.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="game-icon">🎹</div>
+                    </div>
+                    <div class="game-info">
+                        <h3>Piano</h3>
+                        <p>Toque notas musicais no piano virtual.</p>
+                        <a href="games/piano.html" class="game-link">Jogar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Clicar & Criar - Jogos educativos para ensino infantil © 2025</p>
+            <p><i>Desenvolvido por Matheus Laidler</i></p>
+        </div>
+    </div>
+    
+    <script>
+        // Script para alternar entre as visualizações
+        document.addEventListener('DOMContentLoaded', function() {
+            const allGamesBtn = document.getElementById('allGamesBtn');
+            const categoriesBtn = document.getElementById('categoriesBtn');
+            const allGamesContainer = document.getElementById('allGamesContainer');
+            const categoriesContainer = document.getElementById('categoriesContainer');
+            
+            // Botão "Todos os Jogos"
+            allGamesBtn.addEventListener('click', function() {
+                allGamesBtn.classList.add('active');
+                categoriesBtn.classList.remove('active');
+                
+                allGamesContainer.style.display = 'block';
+                categoriesContainer.style.display = 'none';
+            });
+            
+            // Botão "Ver por Categorias"
+            categoriesBtn.addEventListener('click', function() {
+                categoriesBtn.classList.add('active');
+                allGamesBtn.classList.remove('active');
+                
+                categoriesContainer.style.display = 'block';
+                allGamesContainer.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html> 

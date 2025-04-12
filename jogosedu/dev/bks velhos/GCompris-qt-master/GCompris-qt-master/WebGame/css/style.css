@@ -1,0 +1,786 @@
+/* Estilos gerais compartilhados entre os jogos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+h1 {
+    color: #4a90e2;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+/* Botão de voltar */
+.back-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Animações */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Classes de utilidade */
+.text-center {
+    text-align: center;
+}
+
+.mt-3 {
+    margin-top: 15px;
+}
+
+.mb-3 {
+    margin-bottom: 15px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.game-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.game-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.game-card h2 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.game-card p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+/* Estilos específicos para os jogos */
+.game-container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: white;
+    transition: transform 0.3s;
+}
+
+.card.flipped {
+    background-color: white;
+    color: #333;
+    transform: rotateY(180deg);
+}
+
+.game-info {
+    margin-bottom: 1rem;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Estilos para o jogo da velha */
+.tic-tac-toe-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    margin: 2rem auto;
+    max-width: 300px;
+}
+
+.tic-tac-toe-cell {
+    width: 100px;
+    height: 100px;
+    background-color: #f8f9fa;
+    border: 2px solid #dee2e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+/* Estilos para o piano */
+.piano-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto;
+    position: relative;
+}
+
+.piano-key {
+    width: 40px;
+    height: 120px;
+    background-color: white;
+    border: 1px solid #333;
+    margin: 0 2px;
+    cursor: pointer;
+    transition: background-color 0.1s;
+}
+
+.piano-key:hover {
+    background-color: #f0f0f0;
+}
+
+.piano-key.active {
+    background-color: #4CAF50;
+}
+
+.piano-key.black {
+    background-color: black;
+    width: 30px;
+    height: 80px;
+    margin: 0 -15px;
+    z-index: 1;
+    position: relative;
+}
+
+.piano-key.black:hover {
+    background-color: #333;
+}
+
+.piano-key.black.active {
+    background-color: #45a049;
+}
+
+.piano-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Estilos para o jogo de palavras */
+.word-game {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.word-display {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.letter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.letter-button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.letter-button:hover {
+    background-color: #45a049;
+}
+
+.word-input {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.word-input input {
+    width: 200px;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+}
+
+.word-input input:focus {
+    outline: none;
+    border-color: #45a049;
+}
+
+.hint {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+/* Estilos para o labirinto */
+.maze-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 2px;
+    margin: 2rem auto;
+    max-width: 500px;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.maze-cell {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid #dee2e6;
+    transition: background-color 0.3s;
+}
+
+.maze-cell.wall {
+    background-color: #333;
+}
+
+.maze-cell.player {
+    background-color: #4CAF50;
+}
+
+.maze-cell.exit {
+    background-color: #f44336;
+}
+
+.maze-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Estilos para o jogo de matemática */
+.math-problem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 2rem 0;
+    font-size: 2rem;
+}
+
+.math-problem input {
+    width: 80px;
+    height: 40px;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+}
+
+.math-problem input:focus {
+    outline: none;
+    border-color: #45a049;
+}
+
+/* Estilos responsivos para dispositivos móveis */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .game-container {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+    
+    /* Jogo da memória responsivo */
+    .game-board {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 300px;
+        margin: 1rem auto;
+        gap: 8px;
+    }
+    
+    .card {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Jogo da velha responsivo */
+    .tic-tac-toe-board {
+        max-width: 240px;
+    }
+    
+    .tic-tac-toe-cell {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+    
+    /* Piano responsivo */
+    .piano-key {
+        width: 30px;
+        height: 100px;
+    }
+    
+    .piano-key.black {
+        width: 20px;
+        height: 60px;
+        margin: 0 -10px;
+    }
+    
+    /* Labirinto responsivo */
+    .maze-container {
+        max-width: 100%;
+        grid-template-columns: repeat(10, 1fr);
+    }
+    
+    .maze-cell {
+        width: auto;
+        height: 0;
+        padding-bottom: 100%; /* Faz com que as células sejam quadradas */
+    }
+    
+    /* Jogo de palavras responsivo */
+    .letter-button {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    
+    .word-input {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .word-input input {
+        width: 100%;
+        max-width: 250px;
+        margin-bottom: 0.5rem;
+    }
+    
+    .mobile-controls {
+        display: flex;
+    }
+    
+    .card-symbol {
+        font-size: 2.6rem;
+    }
+    
+    .memory-game-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    /* Jogo de ordenação de números responsivo */
+    .number-item {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+}
+
+/* Para dispositivos muito pequenos */
+@media (max-width: 480px) {
+    .game-board {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 280px;
+        gap: 8px;
+    }
+    
+    .card {
+        width: 65px;
+        height: 65px;
+        font-size: 2rem;
+        border-radius: 6px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    }
+    
+    .tic-tac-toe-cell {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .piano-key {
+        width: 25px;
+        height: 80px;
+    }
+    
+    .piano-key.black {
+        width: 18px;
+        height: 50px;
+        margin: 0 -9px;
+    }
+    
+    .maze-cell {
+        border-width: 1px;
+    }
+    
+    .letter-button {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+    
+    button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .card-symbol {
+        font-size: 2.4rem;
+    }
+    
+    .memory-game-container h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .memory-game-container .game-info {
+        margin-bottom: 1.5rem;
+    }
+    
+    .number-item {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+}
+
+/* Controles para dispositivos móveis */
+.mobile-controls {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem auto;
+    gap: 0.5rem;
+}
+
+.mobile-controls button {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.horizontal-controls {
+    display: flex;
+    gap: 2rem;
+}
+
+.mobile-instructions {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.card-symbol {
+    font-size: 2.6rem;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.memory-game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.memory-restart-button {
+    margin-top: 1.5rem;
+}
+
+/* Estilos para o jogo de ordenação de números */
+.numbers-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 2rem 0;
+    min-height: 80px;
+}
+
+.number-item {
+    width: 80px;
+    height: 80px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: grab;
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+}
+
+.number-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.number-item.dragging {
+    opacity: 0.7;
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.number-item.drag-over {
+    border: 2px dashed #fff;
+    background-color: #3a9c3a;
+    transform: scale(1.05);
+}
+
+.game-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.instructions {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 1rem 0;
+}
+
+/* Estilos para o Sudoku */
+.sudoku-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.sudoku-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 2px;
+    background-color: #333;
+    padding: 4px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.sudoku-cell {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    transition: all 0.2s;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.sudoku-cell:hover:not(.fixed) {
+    background-color: #f0f0f0;
+}
+
+.sudoku-cell.fixed {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    cursor: not-allowed;
+}
+
+.sudoku-cell.selected {
+    background-color: #bbdefb;
+}
+
+.sudoku-cell.error {
+    background-color: #ffcdd2;
+    color: #c62828;
+}
+
+.sudoku-cell.hint {
+    animation: hint-pulse 1.5s infinite;
+}
+
+@keyframes hint-pulse {
+    0% { background-color: white; }
+    50% { background-color: #fff9c4; }
+    100% { background-color: white; }
+}
+
+.sudoku-number-selection {
+    display: flex;
+    gap: 10px;
+    margin-top: 0.5rem;
+}
+
+.sudoku-number {
+    width: 50px;
+    height: 50px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sudoku-number:hover {
+    transform: scale(1.1);
+    background-color: #45a049;
+}
+
+.sudoku-number.selected {
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos responsivos para o Sudoku */
+@media (max-width: 768px) {
+    .sudoku-cell {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .sudoku-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sudoku-cell {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .sudoku-number {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+} 

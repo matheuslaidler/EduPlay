@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicar & Criar - Nome do Jogo</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+        }
+
+        .game-container {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .game-title {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .game-info {
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+
+        .game-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .game-button {
+            padding: 8px 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .game-button:hover {
+            background-color: var(--hover-color);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .back-link {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .back-link:hover {
+            background-color: var(--hover-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button class="theme-toggle" id="themeToggle">🌓</button>
+        </div>
+
+        <div class="logo-container">
+            <img src="../img/logo_single.png" alt="Clicar & Criar Logo" class="logo" id="logoImage">
+        </div>
+
+        <div class="game-container">
+            <h1 class="game-title">Nome do Jogo</h1>
+            <div class="game-info">
+                <!-- Conteúdo do jogo aqui -->
+            </div>
+        </div>
+
+        <div class="footer">
+            <img src="../img/logo_single.png" alt="Clicar & Criar" class="footer-logo">
+            <p>Clicar & Criar - Jogos educativos para ensino infantil © 2025</p>
+            <p><i>Desenvolvido por Matheus Laidler</i></p>
+            <a href="../index.html" class="back-link">Voltar para a Página Principal</a>
+        </div>
+    </div>
+
+    <script src="../js/theme.js"></script>
+    <!-- Scripts específicos do jogo aqui -->
+</body>
+</html> 

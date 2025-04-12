@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicar & Criar - Piano</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <script src="../js/theme.js"></script>
+    <style>
+        .game-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border-color: var(--border-color);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .game-status {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 400px;
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .game-status div {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .game-info {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .instructions {
+            font-size: 16px;
+            color: #666;
+            margin: 0;
+        }
+        
+        .game-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .game-controls button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .game-controls button:hover {
+            background-color: #45a049;
+        }
+
+        .game-controls button#restartLevelButton {
+            background-color: #2196F3;
+        }
+
+        .game-controls button#restartLevelButton:hover {
+            background-color: #0b7dda;
+        }
+
+        .game-controls button#restartGameButton {
+            background-color: #f44336;
+        }
+
+        .game-controls button#restartGameButton:hover {
+            background-color: #d32f2f;
+        }
+        
+        .piano-container {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 2px;
+            justify-content: center;
+            width: 100%;
+            max-width: 800px;
+            min-height: 200px;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .piano-key {
+            width: 50px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            background-color: white;
+            color: #333;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 0 0 5px 5px;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.1s, background-color 0.1s;
+            position: relative;
+            padding-bottom: 10px;
+            margin-right: 2px;
+        }
+        
+        .piano-key::after {
+            content: attr(data-key);
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .piano-key:hover {
+            background-color: #f0f0f0;
+        }
+
+        .piano-key.active {
+            background-color: #e0e0e0;
+            transform: translateY(2px);
+        }
+
+        .piano-key.black {
+            width: 30px;
+            height: 100px;
+            background-color: #333;
+            color: white;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+        }
+
+        .piano-key.black[data-key="w"] { left: 40px; }
+        .piano-key.black[data-key="e"] { left: 92px; }
+        .piano-key.black[data-key="r"] { left: 196px; }
+        .piano-key.black[data-key="t"] { left: 248px; }
+        .piano-key.black[data-key="y"] { left: 300px; }
+        .piano-key.black[data-key="u"] { left: 404px; }
+
+        .piano-key.black:hover {
+            background-color: #222;
+        }
+
+        .piano-key.black.active {
+            background-color: #111;
+        }
+
+        .piano-key.black::after {
+            color: #ccc;
+        }
+
+        .game-notification {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 25px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            z-index: 1000;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .game-notification.success {
+            background-color: #4CAF50;
+        }
+
+        .game-notification.error {
+            background-color: #f44336;
+        }
+
+        .game-notification.info {
+            background-color: #2196F3;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translate(-50%, -100%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button class="theme-toggle" id="themeToggle">🌓</button>
+    </div>   
+    <div class="logo-container">
+        <img src="../img/logo_single.png" alt="Clicar & Criar Logo" class="logo" id="logoImage">
+    </div>
+    <div class="game-container">
+        <h1>Piano</h1>
+        <div class="game-status">
+            <div>Nível: <span id="level">1</span></div>
+            <div>Pontuação: <span id="score">0</span></div>
+        </div>
+        <div class="game-info">
+            <p class="instructions">Use as teclas do teclado para tocar: A (C), S (D), D (E), F (F), G (G), H (A), J (B), K (C), L (D) e W (C#), E (D#), R (F#), T (G#), Y (A#), U (C#)</p>
+        </div>
+        <div id="pianoContainer" class="piano-container"></div>
+        <a href="../index.html" class="back-button">Voltar para a página inicial</a>
+    </div>
+    <div id="gameNotification" class="game-notification"></div>
+    <script src="../js/piano.js"></script>
+</body>
+</html> 

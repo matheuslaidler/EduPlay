@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Clicar & Criar - Labirinto</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <script src="../js/theme.js"></script>
+    <style>
+        /* Ajuste geral do container para garantir que cabe em qualquer tela */
+        .game-container {
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 5px;
+            overflow-x: hidden;
+            box-sizing: border-box;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border-color: var(--border-color);
+        }
+        
+        .game-info {
+            margin: 15px 0;
+        }
+        
+        /* Ajustes para o container do labirinto */
+        .maze-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 100%;
+            margin: 5px auto;
+            box-sizing: border-box;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border-color: var(--border-color);
+        }
+        
+        /* Ajustes para o labirinto em si */
+        #maze {
+            display: grid;
+            width: 90vmin; /* Usa o menor entre vw e vh */
+            max-width: 500px;
+            max-height: 500px;
+            aspect-ratio: 1 / 1;
+            border: 3px solid #4a90e2;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #f0f8ff;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            touch-action: none;
+            box-sizing: border-box;
+        }
+        
+        .maze-cell {
+            border: 1px solid #e0e0e0;
+            background-color: white; /*var(--bg-color);*/
+        }
+        
+        .maze-cell.wall {
+            background-color: #4a90e2;
+            border: 1px solid #2a70c2;
+        }
+        
+        .maze-cell.player {
+            background-color: #ff9800;
+            border-radius: 50%;
+            transform: scale(0.8);
+            transition: all 0.2s ease-in-out;
+            background-image: url('https://via.placeholder.com/50x50/ff9800/ffffff?text=😊');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 10;
+        }
+        
+        .maze-cell.exit {
+            background-color: #4caf50;
+            background-image: url('https://via.placeholder.com/50x50/4caf50/ffffff?text=🏁');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        /* Ajuste dos controles para garantir que cabem na tela */
+        .arrow-controls {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(40px, 60px));
+            grid-template-rows: repeat(3, minmax(40px, 60px));
+            margin: 10px auto;
+            gap: 3px;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .arrow-btn {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            margin: 0;
+            font-size: 28px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        
+        .arrow-btn:hover {
+            background-color: #2a70c2;
+        }
+        
+        .arrow-btn:active {
+            transform: scale(0.95);
+            background-color: #1a60b2;
+        }
+        
+        .game-status {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 300px;
+            margin: 15px auto;
+        }
+        
+        .status-item {
+            background-color: var(--bg-color);; /*f0f0f0*/
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        button {
+            padding: 12px 20px;
+            margin: 0 8px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+            touch-action: manipulation;
+        }
+        
+        button:hover {
+            background-color: #2a70c2;
+        }
+        
+        button:active {
+            transform: scale(0.95);
+            background-color: #1a60b2;
+        }
+        
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        
+        /* Para telas pequenas */
+        @media (max-width: 400px) {
+            .game-container {
+                padding: 2px;
+            }
+            
+            #maze {
+                width: 85vmin;
+                max-width: 85vmin;
+                border-width: 2px;
+            }
+            
+            .arrow-controls {
+                grid-template-columns: repeat(3, minmax(40px, 50px));
+                grid-template-rows: repeat(3, minmax(40px, 50px));
+                gap: 2px;
+            }
+            
+            .arrow-btn {
+                font-size: 18px;
+                padding: 0;
+            }
+            
+            .controls {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            button {
+                margin: 0;
+                padding: 8px 15px;
+            }
+        }
+        
+        /* Para telas muito pequenas */
+        @media (max-width: 320px) {
+            #maze {
+                width: 80vmin;
+                max-width: 80vmin;
+            }
+            
+            .arrow-controls {
+                grid-template-columns: repeat(3, minmax(35px, 45px));
+                grid-template-rows: repeat(3, minmax(35px, 45px));
+                gap: 1px;
+            }
+            
+            .arrow-btn {
+                font-size: 16px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+                margin: 5px 0;
+            }
+            
+            .game-info p {
+                font-size: 0.8rem;
+                margin: 3px 0;
+            }
+        }
+        
+        /* Para telas muito estreitas */
+        @media (max-width: 280px) {
+            #maze {
+                width: 95vw;
+                max-width: 95vw;
+                aspect-ratio: 1 / 1;
+            }
+            
+            .arrow-controls {
+                grid-template-columns: repeat(3, minmax(30px, 40px));
+                grid-template-rows: repeat(3, minmax(30px, 40px));
+            }
+        }
+        
+        /* Melhorias para acessibilidade tátil */
+        @media (pointer: coarse) {
+            .arrow-btn {
+                min-height: 56px;
+                min-width: 56px;
+            }
+            
+            button {
+                min-height: 44px;
+            }
+        }
+        
+        /* Prevenir zoom no toque dos botões em dispositivos iOS */
+        @media screen and (max-width: 768px) {
+            select, textarea, button, input {
+                font-size: 16px;
+            }
+        }
+        
+        .game-notification {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 25px;
+            border-radius: 10px;
+            background-color: #4a90e2;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .game-notification.success {
+            background-color: #4caf50;
+        }
+
+        .game-notification.error {
+            background-color: #f44336;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translate(-50%, -100%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .game-notification {
+                width: 90%;
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button class="theme-toggle" id="themeToggle">🌓</button>
+    </div>   
+    <div class="logo-container">
+        <img src="../img/logo_single.png" alt="Clicar & Criar Logo" class="logo" id="logoImage">
+    </div>
+    <div class="game-container">
+        <h1>Labirinto</h1>
+        
+        <div class="game-info">
+            <p>Ajude o personagem a encontrar a saída do labirinto!</p>
+            <p>Use as setas do teclado ou os botões na tela para mover o personagem.</p>
+        </div>
+        
+        <div class="maze-container">
+            <div class="game-status">
+                <div class="status-item">Nível: <span id="level">1</span></div>
+                <div class="status-item">Movimentos: <span id="moves">0</span></div>
+            </div>
+            
+            <div id="maze"></div>
+            
+            <div class="arrow-controls">
+                <div></div>
+                <button class="arrow-btn" id="up">↑</button>
+                <div></div>
+                <button class="arrow-btn" id="left">←</button>
+                <div></div>
+                <button class="arrow-btn" id="right">→</button>
+                <div></div>
+                <button class="arrow-btn" id="down">↓</button>
+                <div></div>
+            </div>
+            
+            <div class="controls">
+                <button id="restartButton">Reiniciar</button>
+                <button id="nextLevel" disabled>Próximo Nível</button>
+            </div>
+        </div>
+        
+        <a href="../index.html" class="back-button">Voltar para a página inicial</a>
+    </div>
+    
+    <div id="gameNotification" class="game-notification"></div>
+    
+    <script src="../js/labirinto.js"></script>
+</body>
+</html> 
