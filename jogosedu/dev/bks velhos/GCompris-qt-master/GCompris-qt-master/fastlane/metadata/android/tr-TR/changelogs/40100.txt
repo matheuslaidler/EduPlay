@@ -1,2 +1,0 @@
-- Birçok kullanılabilirlik iyileştirmesi
-- Birçok hata düzeltmesi

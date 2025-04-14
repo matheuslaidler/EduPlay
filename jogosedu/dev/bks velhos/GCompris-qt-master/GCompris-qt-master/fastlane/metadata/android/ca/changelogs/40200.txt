@@ -1,3 +1,0 @@
-- S'han afegit les traduccions per al lituà
-- Moltes millores en la usabilitat
-- Moltes esmenes d'errors

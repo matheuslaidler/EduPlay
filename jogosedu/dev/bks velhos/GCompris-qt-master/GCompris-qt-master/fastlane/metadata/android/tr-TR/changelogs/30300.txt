@@ -1,4 +1,0 @@
-- Arapça ve Esperanto çeviri eklendi
-- Birçok çeviri güncellemesi
-- Birçok yeni görsel
-- Birçok hata düzeltmesi

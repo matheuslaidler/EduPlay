@@ -1,2 +1,0 @@
-- Numerosas mejoras de usabilidad.
-- Muchas correcciones de errores.

@@ -1,3 +1,0 @@
-- Dodan prevod v latvijščino
-- Veliko uporabnih izboljšav
-- Veliko popravljenih napak

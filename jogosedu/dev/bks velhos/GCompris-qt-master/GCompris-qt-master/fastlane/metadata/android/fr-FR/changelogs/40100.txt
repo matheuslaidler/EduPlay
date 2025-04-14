@@ -1,2 +1,0 @@
-- Beaucoup d'améliorations d'ergonomie.
-- Plein de corrections

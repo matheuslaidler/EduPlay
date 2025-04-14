@@ -1,3 +1,0 @@
-- Pievienots latviešu valodas tulkojums
-- Daudzi lietojamības uzlabojumi
-- Daudzi kļūdu labojumi

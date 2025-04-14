@@ -1,2 +1,0 @@
-- Moltes millores en la usabilitat
-- Moltes esmenes d'errors

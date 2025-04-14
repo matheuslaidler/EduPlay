@@ -1,3 +1,0 @@
-- Engadiuse unha tradución ao letón.
-- Moitas melloras de usabilidade.
-- Moitas correccións de fallos.

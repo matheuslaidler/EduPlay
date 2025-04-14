@@ -1,3 +1,0 @@
-- Letonca çeviri eklendi
-- Birçok kullanılabilirlik iyileştirmesi
-- Birçok hata düzeltmesi

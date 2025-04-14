@@ -1,3 +1,0 @@
-- Translation added for Latvian
-- Many usability improvements
-- Many bug fixes

@@ -1,3 +1,0 @@
-- Přidán překlad pro Lotyštinu
-- Mnoho vylepšení použitelnosti
-- Opravena spousta chyb

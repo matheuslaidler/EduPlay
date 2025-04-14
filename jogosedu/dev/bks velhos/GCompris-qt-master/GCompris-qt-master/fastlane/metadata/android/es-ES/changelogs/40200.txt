@@ -1,3 +1,0 @@
-- Se han añadido traducciones para el letón.
-- Numerosas mejoras de usabilidad.
-- Muchas correcciones de errores.
