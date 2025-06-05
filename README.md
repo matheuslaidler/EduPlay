@@ -1,6 +1,16 @@
 # EduPlay | Catálogo de WebGames Educacionais
  Meu projeto, que fiz pensando em ajudar uma empresa de tecnologia na educação em que trabalho, agora foi adaptado para ficar aqui de código aberto e adpatado para ficar como parte do meu site. 
 
+A ideia é estimular inteligência em crianças bem novas. 
+
+Alguns jogos são pensados em ajudar a criança a aprender a usar o mouse, teclado ou até touch-screens de celulares e tablets. 
+
+Outros jogos são pensados em ajudar as crianças a estimular seus reciocínios lógicos e matemáticos.
+
+Temos alguns jogos clássicos, como sudoku, labirinto e forca.
+
+Alguns jogos são baseado e outros jogos infantis, como os que temos no projeto GCompris da KDE.
+
 Poderá ser testado e usado via url disponível na descrição do projeto.
 
 Até então são 14 jogos prontos, com 1 engatilhado (mas sem previsão para sair, este projeto está pausado).
