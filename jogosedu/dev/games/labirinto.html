@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Clicar & Criar - Labirinto</title>
+    <link rel="shortcut icon" type="image/jpg" href="../img/logo_single.png"/>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/theme.css">
     <script src="../js/theme.js"></script>
@@ -17,7 +18,7 @@
             padding: 5px;
             overflow-x: hidden;
             box-sizing: border-box;
-            background-color: var(--bg-color);
+            /*background-color: var(--bg-color);*/
             color: var(--text-color);
             border-color: var(--border-color);
         }
@@ -35,7 +36,7 @@
             max-width: 100%;
             margin: 5px auto;
             box-sizing: border-box;
-            background-color: var(--bg-color);
+            background-color: var(--card-bg);
             color: var(--text-color);
             border-color: var(--border-color);
         }
@@ -47,7 +48,7 @@
             max-width: 500px;
             max-height: 500px;
             aspect-ratio: 1 / 1;
-            border: 3px solid #4a90e2;
+            border: 3px solid #34b479;
             border-radius: 10px;
             overflow: hidden;
             background-color: #f0f8ff;
@@ -63,8 +64,8 @@
         }
         
         .maze-cell.wall {
-            background-color: #4a90e2;
-            border: 1px solid #2a70c2;
+            background-color: #34b479;
+            border: 1px solid #e2be4a;
         }
         
         .maze-cell.player {
@@ -99,7 +100,7 @@
         }
         
         .arrow-btn {
-            background-color: #4a90e2;
+            background-color: #34b479;
             color: white;
             border: none;
             border-radius: 10px;
@@ -116,12 +117,12 @@
         }
         
         .arrow-btn:hover {
-            background-color: #2a70c2;
+            background-color: #34b479;
         }
         
         .arrow-btn:active {
             transform: scale(0.95);
-            background-color: #1a60b2;
+            background-color: #e2be4a;
         }
         
         .game-status {
@@ -143,7 +144,7 @@
         button {
             padding: 12px 20px;
             margin: 0 8px;
-            background-color: #4a90e2;
+            background-color: #4ae2af;
             color: white;
             border: none;
             border-radius: 5px;
@@ -156,12 +157,12 @@
         }
         
         button:hover {
-            background-color: #2a70c2;
+            background-color: #34b479;
         }
         
         button:active {
             transform: scale(0.95);
-            background-color: #1a60b2;
+            background-color: #4ae2a3;
         }
         
         button:disabled {

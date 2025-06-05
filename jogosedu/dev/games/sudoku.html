@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clicar & Criar - Sudoku Júnior</title>
+    <link rel="shortcut icon" type="image/jpg" href="../img/logo_single.png"/>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/theme.css">
     <script src="../js/theme.js"></script>
     <style>
         .game-container {
-            background-color: var(--bg-color);
+            /*background-color: var(--bg-color);*/
             color: var(--text-color);
             border-color: var(--border-color);
         }
@@ -19,7 +20,7 @@
             align-items: center;
             margin: 20px auto;
             max-width: 600px;
-            background-color: var(--bg-color);
+            /*background-color: var(--bg-color);*/
             color: var(--text-color);
             border-color: var(--border-color);
         }
@@ -45,7 +46,7 @@
             font-weight: bold;
             cursor: pointer;
             user-select: none;
-            background-color: var(--bg-color);
+            background-color: var(--card-bg);
         }
         
         /* Adicionar borda mais grossa para os quadrantes 2x2 */
@@ -96,7 +97,8 @@
         .sudoku-number {
             width: 40px;
             height: 40px;
-            background-color: #e0e0e0;
+            background-color: #bbbbbbd8;
+            color: var(--bg-color);
             border-radius: 4px;
             display: flex;
             justify-content: center;
@@ -132,9 +134,9 @@
         }
         
         .mode-button.active {
-            background-color: #4a90e2;
+            background-color: #34b479;
             color: white;
-            border-color: #2a70c2;
+            border-color: #e2be4a;
         }
         
         .game-buttons {
@@ -179,7 +181,7 @@
         }
 
         .game-notification.success {
-            background-color: #4CAF50;
+            background-color: #34b479;
         }
 
         .game-notification.error {
@@ -187,7 +189,7 @@
         }
 
         .game-notification.info {
-            background-color: #2196F3;
+            background-color: #34b479;
         }
 
         @keyframes slideIn {

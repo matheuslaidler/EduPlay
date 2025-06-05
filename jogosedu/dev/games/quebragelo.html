@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clicar & Criar - Quebra-Gelo</title>
+    <link rel="shortcut icon" type="image/jpg" href="../img/logo_single.png"/>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/theme.css">
     <script src="../js/theme.js"></script>
@@ -13,7 +14,7 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: var(--bg-color);
+            /*background-color: var(--bg-color);*/
             color: var(--text-color);
             border-color: var(--border-color);
         }
@@ -66,7 +67,7 @@
         .progress-bar {
             width: 0%;
             height: 100%;
-            background-color: #4CAF50;
+            background-color: #34b479;
             transition: width 0.3s ease;
         }
         
@@ -98,7 +99,8 @@
         <h1>Quebra-Gelo</h1>
         
         <div class="game-info">
-            <p>Clique nos blocos de gelo para quebrá-los e descobrir a imagem escondida!</p>
+            <p>Clique nos blocos de gelo para quebrá-los e descobrir o emoji escondido!</p>
+            <p>Quanto mais alto o nível, mais difícil será quebrar o gelo.</p>
             <div class="level-indicator">Nível: <span id="level">1</span></div>
             <div class="click-counter">Cliques: <span id="clicks">0</span> / <span id="maxClicks">50</span></div>
         </div>

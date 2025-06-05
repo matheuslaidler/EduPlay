@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (logoImage) {
             const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
             logoImage.src = currentTheme === 'dark' ? 
-                'img/logo_whitefont.png' : 
-                'img/logo_blackfont.png';
+                'img/logo_w.png' : 
+                'img/logo_b.png';
         }
     }
 
